@@ -36,7 +36,7 @@ Tập dữ liệu Adult có phân bố lớp mất cân bằng nghiêm trọng k
 |---|---|---|
 | Lỗi import `FallbackAsyncAdaptedQueuePool` khi khởi tạo tracking MLflow | Thư viện SQLAlchemy phiên bản mới loại bỏ class này khỏi `sqlalchemy.pool` gây xung đột với MLflow 2.13.0 | Gán alias tương thích `FallbackAsyncAdaptedQueuePool = AsyncAdaptedQueuePool` trực tiếp vào `sqlalchemy.pool` trước khi import MLflow |
 | Nguy cơ runner GitHub Actions thiếu dữ liệu nhị phân khi chạy `dvc pull` | Đẩy commit Git chứa con trỏ `.dvc` lên remote trước khi hoàn tất đẩy dữ liệu lên Cloud Storage | Luôn thực hiện lệnh `dvc push` đồng bộ dữ liệu lên bucket trước khi thực hiện `git push` lên GitHub |
-| Lỗi xác thực quyền truy cập Cloud Storage khi kéo và đẩy dữ liệu DVC | Service Account chưa được gán đúng vai trò hoặc đường dẫn file khóa chứng thực bị sai lệch | Cấp đúng quyền `roles/storage.objectAdmin` trên bucket và cấu hình biến môi trường `credentialpath` cho remote DVC |
+| Lỗi xác thực quyền truy cập Cloud Storage (S3) khi kéo và đẩy dữ liệu DVC | IAM User chưa được cấp quyền truy cập S3 bucket hoặc khóa AWS Access Key chưa đồng bộ | Gán policy s3:PutObject, s3:GetObject cho IAM User và cấu hình credentials chính xác trong môi trường DVC / GitHub Secrets |
 
 ---
 
