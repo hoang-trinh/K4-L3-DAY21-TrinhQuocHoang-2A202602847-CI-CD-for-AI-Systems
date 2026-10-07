@@ -45,9 +45,9 @@ Tập dữ liệu Adult có phân bố lớp mất cân bằng nghiêm trọng k
 | | f1_score | accuracy |
 |---|---|---|
 | Bước 2 (chỉ `train_batch1`) | 0.7149 | 0.8740 |
-| Bước 3 (thêm `train_batch2`) | ___ | ___ |
+| Bước 3 (thêm `train_batch2`) | 0.7289 | 0.8780 |
 
-**Nhận xét:** ___
+**Nhận xét:** Khi bổ sung 22.361 mẫu từ `train_batch2` (tổng 44.722 mẫu), f1_score tăng từ 0.7149 lên 0.7289 (+0.0140) và accuracy tăng nhẹ từ 0.8740 lên 0.8780 (+0.0040). Việc gấp đôi lượng dữ liệu giúp mô hình Gradient Boosting học được nhiều biến thể đặc trưng hơn của lớp thiểu số, qua đó cải thiện năng lực nhận diện lớp thu nhập cao trên tập holdout. Quan trọng nhất, quy trình Continuous Training đã chứng minh tính tự động hóa hoàn toàn: dữ liệu mới đi trọn một vòng từ commit DVC đến model suy luận trên EC2 mà không cần bất kỳ can thiệp thủ công nào.
 
 ---
 
